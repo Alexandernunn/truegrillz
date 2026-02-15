@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useSubmitContact } from "@/hooks/use-contact";
 import { useToast } from "@/hooks/use-toast";
 import { PageTransition } from "@/components/PageTransition";
 
@@ -22,20 +21,29 @@ const CONTACT_INFO = [
 
 export default function Contact() {
   const [contactForm, setContactForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const submitContact = useSubmitContact();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    submitContact.mutate(contactForm, {
-      onSuccess: () => {
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("https://formspree.io/f/xjgewljd", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(contactForm),
+      });
+      if (res.ok) {
         toast({ title: "Message Sent!", description: "We'll get back to you soon." });
         setContactForm({ name: "", email: "", subject: "", message: "" });
-      },
-      onError: () => {
-        toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
-      },
-    });
+      } else {
+        throw new Error("Failed");
+      }
+    } catch {
+      toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -179,11 +187,11 @@ export default function Contact() {
                   </div>
                   <Button
                     type="submit"
-                    disabled={submitContact.isPending}
+                    disabled={isSubmitting}
                     className="w-full bg-[#F83030] text-white font-bold rounded-full shadow-md"
                     data-testid="button-send-message"
                   >
-                    {submitContact.isPending ? "Sending..." : "Send Message"}
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </div>

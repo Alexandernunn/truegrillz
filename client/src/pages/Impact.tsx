@@ -19,10 +19,9 @@ const GALLERY_IMAGES = [
 ];
 
 const STATS = [
-  { end: 500, label: "Youth Mentored", suffix: "+", description: "Young lives guided toward brighter futures" },
-  { end: 1000, label: "Meals Provided", suffix: "+", description: "Nutritious meals served to children in need" },
-  { end: 50, label: "Events Hosted", suffix: "+", description: "Community gatherings bringing Nashville together" },
-  { end: 200, label: "Active Volunteers", suffix: "+", description: "Dedicated individuals making a difference" },
+  { end: 1000, label: "People Helped", suffix: "+", description: "Lives touched through our community programs" },
+  { end: 1000, label: "Meals Served", suffix: "+", description: "Nutritious meals served to children in need" },
+  { end: 3, label: "Events Held", suffix: "", description: "Community gatherings bringing Nashville together" },
 ];
 
 function StatCounter({ end, label, suffix, description, delay }: { end: number; label: string; suffix: string; description: string; delay: number }) {
@@ -77,7 +76,7 @@ export default function Impact() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
               {STATS.map((stat, i) => (
                 <StatCounter key={stat.label} {...stat} delay={i * 0.1} />
               ))}

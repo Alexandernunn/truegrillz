@@ -124,9 +124,9 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-3 gap-6 md:gap-12 max-w-lg mx-auto">
-            <QuickStat value="500+" label="Youth Mentored" />
+            <QuickStat value="1K+" label="People Helped" />
             <QuickStat value="1K+" label="Meals Served" />
-            <QuickStat value="50+" label="Events Held" />
+            <QuickStat value="3" label="Events Held" />
           </div>
         </div>
 
