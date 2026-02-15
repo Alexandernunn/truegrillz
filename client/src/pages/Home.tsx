@@ -4,6 +4,7 @@ import { Link as ScrollLink } from "react-scroll";
 import { ArrowDown, Heart, Check } from "lucide-react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import adoptBusStopVideo from "@assets/AQO1WTN4NrnqaH1Ni9YwDlw9OkGWpL0tpqS2ZbhLYcCe7F6yXPdRot8A84UA_9_1771138179054.mp4";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -215,6 +216,7 @@ export default function Home() {
             subtitle="Child Nutrition"
             description="Every child deserves access to daily nutrition without exception. Our Adopt a Bus Stop initiative ensures that kids across Nashville have the meals they need to learn, grow, and thrive."
             image={MEALS_IMG}
+            video={adoptBusStopVideo}
             reverse={true}
             color="green"
           />

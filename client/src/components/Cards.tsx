@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Calendar, Users, Heart, Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -106,11 +106,55 @@ interface ProgramRowProps {
   subtitle: string;
   description: string;
   image: string;
+  video?: string;
   reverse?: boolean;
   color: "red" | "green" | "teal";
 }
 
-export function ProgramRow({ title, subtitle, description, image, reverse = false, color }: ProgramRowProps) {
+function ScrollVideo({ src, title }: { src: string; title: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+    if (!video || !container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={containerRef} className="w-full h-full">
+      <video
+        ref={videoRef}
+        src={src}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className="w-full h-full object-cover"
+        aria-label={title}
+        data-testid={`video-${title.toLowerCase().replace(/\s+/g, '-')}`}
+      />
+    </div>
+  );
+}
+
+export function ProgramRow({ title, subtitle, description, image, video, reverse = false, color }: ProgramRowProps) {
   const textColor = color === 'red' ? 'text-[#F83030]' : color === 'green' ? 'text-[#18A058]' : 'text-[#1E4E48]';
   const bgColor = color === 'red' ? 'bg-[#F83030]' : color === 'green' ? 'bg-[#18A058]' : 'bg-[#1E4E48]';
 
@@ -124,8 +168,12 @@ export function ProgramRow({ title, subtitle, description, image, reverse = fals
         className="w-full lg:w-1/2"
       >
         <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] group">
-          <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500", bgColor)} />
-          <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10", bgColor)} />
+          {video ? (
+            <ScrollVideo src={video} title={title} />
+          ) : (
+            <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          )}
         </div>
       </motion.div>
 
