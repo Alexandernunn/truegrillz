@@ -64,7 +64,7 @@ interface EventCardProps {
 }
 
 export function EventCard({ title, date, location, description, category, color, image }: EventCardProps) {
-  const btnColor = color === 'red' ? 'bg-[#F83030] hover:bg-[#C92828]' : color === 'green' ? 'bg-[#18A058] hover:bg-[#107040]' : 'bg-[#1E4E48] hover:bg-[#103030]';
+  const btnColor = color === 'red' ? 'bg-[#F83030]' : color === 'green' ? 'bg-[#18A058]' : 'bg-[#1E4E48]';
   const badgeColor = color === 'red' ? 'bg-[#F83030]' : color === 'green' ? 'bg-[#18A058]' : 'bg-[#1E4E48]';
 
   return (
@@ -93,7 +93,7 @@ export function EventCard({ title, date, location, description, category, color,
           {location}
         </div>
         
-        <Button className={cn("w-full rounded-full text-white font-semibold", btnColor)}>
+        <Button className={cn("w-full rounded-full text-white font-semibold", btnColor)} data-testid={`button-learn-more-${title.toLowerCase().replace(/\s+/g, '-')}`}>
           Learn More
         </Button>
       </div>

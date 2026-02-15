@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
+import { Instagram, ArrowRight, Calendar } from "lucide-react";
+import { Link } from "wouter";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Section, SectionHeader } from "@/components/Section";
 import { EventCard } from "@/components/Cards";
+import { Button } from "@/components/ui/button";
 import { PageTransition } from "@/components/PageTransition";
 
 const INSTAGRAM_GRID_IMAGES = [
@@ -20,14 +23,28 @@ export default function Events() {
       <div className="min-h-screen">
         <Navbar />
 
-        <Section id="events" variant="white" className="pt-32">
-          <SectionHeader
-            label="Get Involved"
-            title="Upcoming Events & Gatherings"
-            subtitle="Join us at our next event and experience the power of community firsthand."
-          />
+        <div className="relative py-24 lg:py-32 bg-gradient-to-br from-[#1E4E48] to-[#103030] text-white overflow-hidden pt-32 lg:pt-40">
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-1/4 w-72 h-72 bg-[#18A058]/15 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-[#F83030]/10 rounded-full blur-3xl" />
+          </div>
+          <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-[#18A058] text-xs font-bold uppercase tracking-widest mb-6">
+                <Calendar className="w-3 h-3 inline mr-1.5 -mt-0.5" />Get Involved
+              </span>
+              <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight">
+                Upcoming Events & Gatherings
+              </h1>
+              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                Join us at our next event and experience the power of community firsthand. Every gathering is an opportunity to grow.
+              </p>
+            </motion.div>
+          </div>
+        </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+        <Section id="events" variant="white">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             <EventCard
               title="Annual Community Giveaway"
               date="Dec 2025"
@@ -58,13 +75,33 @@ export default function Events() {
           </div>
         </Section>
 
-        <Section id="social" variant="light">
+        <section className="py-16 md:py-20 bg-[#F0F7F4]">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="font-display font-bold text-2xl md:text-3xl text-[#1E4E48] mb-4">Want to Volunteer?</h3>
+              <p className="text-gray-600 mb-8 max-w-xl mx-auto">
+                We're always looking for passionate people to join our mission. No experience needed — just a willingness to help.
+              </p>
+              <Link href="/contact">
+                <Button className="bg-[#18A058] text-white rounded-full font-bold shadow-lg" size="lg" data-testid="button-volunteer-cta">
+                  Sign Up to Volunteer <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
+        <Section id="social" variant="white">
           <SectionHeader
             label="@goodvibetribe615"
             title="Follow Us on Instagram"
             subtitle="Photos from our community — real moments, real impact."
           />
-          <div className="grid grid-cols-3 grid-rows-2 gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-3 grid-rows-2 gap-3 md:gap-4 max-w-4xl mx-auto">
             {INSTAGRAM_GRID_IMAGES.map((img, i) => (
               <motion.a
                 key={i}
@@ -74,14 +111,13 @@ export default function Events() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                whileHover={{ scale: 1.02 }}
-                className="aspect-square rounded-xl overflow-hidden shadow-md group relative block"
+                transition={{ delay: i * 0.06 }}
+                className="aspect-square rounded-lg md:rounded-xl overflow-hidden shadow-md group relative block"
                 data-testid={`img-instagram-${i}`}
               >
-                <img src={img.src} alt={img.caption} className="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" referrerPolicy="no-referrer" />
-                <div className="absolute inset-0 bg-[#103030]/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity" style={{ visibility: "visible" }}>
-                  <span className="text-white font-bold text-sm text-center px-2">{img.caption}</span>
+                <img src={img.src} alt={img.caption} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" referrerPolicy="no-referrer" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#103030]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 flex items-end justify-center transition-opacity p-3" style={{ visibility: "visible" }}>
+                  <span className="text-white font-semibold text-xs md:text-sm text-center">{img.caption}</span>
                 </div>
               </motion.a>
             ))}
@@ -91,10 +127,10 @@ export default function Events() {
               href="https://instagram.com/goodvibetribe615"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#F83030] to-[#E1306C] text-white font-bold px-8 py-3 rounded-full shadow-lg transition-transform hover:scale-105"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#F83030] to-[#E1306C] text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5"
               data-testid="link-instagram-profile"
             >
-              Follow @goodvibetribe615 on Instagram
+              <Instagram className="w-5 h-5" /> Follow @goodvibetribe615
             </a>
           </div>
         </Section>
