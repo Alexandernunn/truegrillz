@@ -18,7 +18,7 @@ const NAV_LINKS = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,7 +59,13 @@ export function Navbar() {
           el.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       } else {
-        window.location.href = to;
+        setLocation("/");
+        setTimeout(() => {
+          const el = document.getElementById(sectionId);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 400);
       }
     }
   };

@@ -1,5 +1,5 @@
 import { Instagram, MapPin, Phone, Heart } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import logo from "@assets/Logo_(1)_1771118995327.png";
 
 const QUICK_LINKS = [
@@ -11,9 +11,26 @@ const QUICK_LINKS = [
 ];
 
 export function Footer() {
+  const [location, setLocation] = useLocation();
+  const isHome = location === "/";
+
   const handleNavClick = (to: string) => {
     if (to.startsWith("/#")) {
-      window.location.href = to;
+      const sectionId = to.replace("/#", "");
+      if (isHome) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } else {
+        setLocation("/");
+        setTimeout(() => {
+          const el = document.getElementById(sectionId);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 400);
+      }
     }
   };
 
