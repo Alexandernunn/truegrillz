@@ -1,6 +1,6 @@
 # Overview
 
-Good Vibe Tribe is a nonprofit website for a Nashville, Tennessee-based community relief organization. It's a single-page scrolling site with sections for Home, About, Programs, Impact, Events, and Contact. The site features smooth scroll navigation, animated counters, parallax effects, a contact form that submits to a database, and an events listing pulled from a PostgreSQL database.
+Good Vibe Tribe is a nonprofit website for a Nashville, Tennessee-based community relief organization. It's a multi-page site with separate routes for Home (Hero, About, Programs), Impact (stats + gallery), Events (event cards + Instagram grid), Donate (donation forms), and Contact (contact form). The site features page transitions via framer-motion, animated counters, parallax effects, scroll-triggered auto-play videos, a contact form that submits to a database, and event listings pulled from a PostgreSQL database.
 
 # User Preferences
 
@@ -10,11 +10,11 @@ Preferred communication style: Simple, everyday language.
 
 ## Frontend
 - **Framework**: React 18 with TypeScript, bundled by Vite
-- **Routing**: Wouter (lightweight router), though the app is essentially a single-page scroll site with one route (`/`)
+- **Routing**: Wouter (lightweight router) with routes: `/` (Home), `/impact`, `/events`, `/donate`, `/contact`
 - **Styling**: Tailwind CSS with custom CSS variables for the brand palette (red `#F83030`, green `#18A058`, dark teal `#1E4E48`)
 - **UI Components**: shadcn/ui (new-york style) with Radix UI primitives — all components live in `client/src/components/ui/`
-- **Animations**: Framer Motion for scroll animations, parallax, and mobile menu transitions
-- **Scrolling**: `react-scroll` for smooth anchor navigation between sections
+- **Animations**: Framer Motion for scroll animations, parallax, page transitions (AnimatePresence), and mobile menu transitions
+- **Scrolling**: SPA-friendly hash navigation for within-page sections (About, Programs on Home page)
 - **Counters**: `react-countup` with `react-intersection-observer` for animated impact statistics
 - **Data Fetching**: TanStack React Query for server state management
 - **Fonts**: Poppins (headings/display) and Figtree (body text) via Google Fonts
