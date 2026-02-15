@@ -256,14 +256,6 @@ export default function Home() {
 
         <div className="space-y-20 lg:space-y-28">
           <ProgramRow
-            title="Guiding Young Minds"
-            subtitle="Youth Development"
-            description="Our mentorship program connects experienced volunteers with Nashville's youth, providing dedicated support, guidance, and resources. Through meaningful one-on-one relationships, young people gain the confidence and skills they need."
-            image={MENTOR_IMG}
-            color="red"
-            link="/impact"
-          />
-          <ProgramRow
             title="Adopt a Bus Stop"
             subtitle="Child Nutrition"
             description="Every child deserves access to daily nutrition without exception. Our Adopt a Bus Stop initiative ensures that kids across Nashville have the meals they need to learn, grow, and thrive."
@@ -272,6 +264,14 @@ export default function Home() {
             reverse={true}
             color="green"
             link="/donate"
+          />
+          <ProgramRow
+            title="Guiding Young Minds"
+            subtitle="Youth Development"
+            description="Our mentorship program connects experienced volunteers with Nashville's youth, providing dedicated support, guidance, and resources. Through meaningful one-on-one relationships, young people gain the confidence and skills they need."
+            image={MENTOR_IMG}
+            color="red"
+            link="/impact"
           />
           <ProgramRow
             title="Community Events & Giveaways"
