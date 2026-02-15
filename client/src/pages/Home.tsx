@@ -174,6 +174,42 @@ export default function Home() {
         </div>
       </Section>
 
+      <Section id="programs" variant="light">
+        <SectionHeader
+          label="What We Do"
+          title="Programs That Create Lasting Impact"
+        />
+
+        <div className="space-y-20 lg:space-y-28">
+          <ProgramRow
+            title="Adopt a Bus Stop"
+            subtitle="Child Nutrition"
+            description="Every child deserves access to daily nutrition without exception. Our Adopt a Bus Stop initiative ensures that kids across Nashville have the meals they need to learn, grow, and thrive."
+            image={MEALS_IMG}
+            video={adoptBusStopVideo}
+            reverse={true}
+            color="green"
+            link="/donate"
+          />
+          <ProgramRow
+            title="Guiding Young Minds"
+            subtitle="Youth Development"
+            description="Our mentorship program connects experienced volunteers with Nashville's youth, providing dedicated support, guidance, and resources. Through meaningful one-on-one relationships, young people gain the confidence and skills they need."
+            image={MENTOR_IMG}
+            color="red"
+            link="/impact"
+          />
+          <ProgramRow
+            title="Community Events & Giveaways"
+            subtitle="Community Building"
+            description="From our annual community giveaways to concerts, paintball outings, and volunteer drives, our events bring Nashville together. Each gathering creates opportunities to connect and share experiences."
+            image={COMMUNITY_IMG}
+            color="teal"
+            link="/events"
+          />
+        </div>
+      </Section>
+
       <Section id="about" variant="cream">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
@@ -245,42 +281,6 @@ export default function Home() {
               <Heart className="w-6 h-6 fill-current" />
             </div>
           </motion.div>
-        </div>
-      </Section>
-
-      <Section id="programs" variant="light">
-        <SectionHeader
-          label="What We Do"
-          title="Programs That Create Lasting Impact"
-        />
-
-        <div className="space-y-20 lg:space-y-28">
-          <ProgramRow
-            title="Adopt a Bus Stop"
-            subtitle="Child Nutrition"
-            description="Every child deserves access to daily nutrition without exception. Our Adopt a Bus Stop initiative ensures that kids across Nashville have the meals they need to learn, grow, and thrive."
-            image={MEALS_IMG}
-            video={adoptBusStopVideo}
-            reverse={true}
-            color="green"
-            link="/donate"
-          />
-          <ProgramRow
-            title="Guiding Young Minds"
-            subtitle="Youth Development"
-            description="Our mentorship program connects experienced volunteers with Nashville's youth, providing dedicated support, guidance, and resources. Through meaningful one-on-one relationships, young people gain the confidence and skills they need."
-            image={MENTOR_IMG}
-            color="red"
-            link="/impact"
-          />
-          <ProgramRow
-            title="Community Events & Giveaways"
-            subtitle="Community Building"
-            description="From our annual community giveaways to concerts, paintball outings, and volunteer drives, our events bring Nashville together. Each gathering creates opportunities to connect and share experiences."
-            image={COMMUNITY_IMG}
-            color="teal"
-            link="/events"
-          />
         </div>
       </Section>
 
