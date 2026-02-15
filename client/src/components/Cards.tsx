@@ -1,6 +1,7 @@
 import { ReactNode, useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Calendar, Users, Heart, Compass } from "lucide-react";
+import { Link } from "wouter";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -109,6 +110,7 @@ interface ProgramRowProps {
   video?: string;
   reverse?: boolean;
   color: "red" | "green" | "teal";
+  link?: string;
 }
 
 function ScrollVideo({ src, title }: { src: string; title: string }) {
@@ -154,7 +156,7 @@ function ScrollVideo({ src, title }: { src: string; title: string }) {
   );
 }
 
-export function ProgramRow({ title, subtitle, description, image, video, reverse = false, color }: ProgramRowProps) {
+export function ProgramRow({ title, subtitle, description, image, video, reverse = false, color, link }: ProgramRowProps) {
   const textColor = color === 'red' ? 'text-[#F83030]' : color === 'green' ? 'text-[#18A058]' : 'text-[#1E4E48]';
   const bgColor = color === 'red' ? 'bg-[#F83030]' : color === 'green' ? 'bg-[#18A058]' : 'bg-[#1E4E48]';
 
@@ -189,9 +191,9 @@ export function ProgramRow({ title, subtitle, description, image, video, reverse
         </span>
         <h3 className="font-display font-bold text-3xl md:text-4xl text-[#1E4E48] mb-6">{title}</h3>
         <p className="text-lg text-gray-600 leading-relaxed mb-8">{description}</p>
-        <button className={cn("flex items-center font-bold text-lg group", textColor)}>
+        <Link href={link || "/events"} className={cn("flex items-center font-bold text-lg group", textColor)} data-testid={`link-learn-more-${title.toLowerCase().replace(/\s+/g, '-')}`}>
           Learn More <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-        </button>
+        </Link>
       </motion.div>
     </div>
   );
