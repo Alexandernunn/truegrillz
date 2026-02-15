@@ -16,21 +16,32 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useSubmitContact } from "@/hooks/use-contact";
 import { useToast } from "@/hooks/use-toast";
 
-// === Images ===
-const HERO_IMG = "https://static.wixstatic.com/media/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg/v1/crop/x_2,y_0,w_1021,h_681/fill/w_1349,h_900,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg";
-const MENTOR_IMG = "https://lh3.googleusercontent.com/d/1LytFYEomz7eMVGaN-ZBDgc1L5zy70gVQ";
-const ABOUT_IMG = "https://lh3.googleusercontent.com/d/1LKHQnL0xVLFg6pXxkSY06bk144oFWdfv";
-const MEALS_IMG = "https://static.wixstatic.com/media/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg/v1/fill/w_543,h_305,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg";
-const COMMUNITY_IMG = "https://scontent-den2-1.cdninstagram.com/v/t51.71878-15/587653429_833878459251471_277270254532439369_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_9_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5";
+// === Images (using reliable Wixstatic + Unsplash sources) ===
+const HERO_IMG = "https://static.wixstatic.com/media/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg/v1/crop/x_2,y_0,w_1278,h_854/fill/w_728,h_519,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/22C19768-3581-459A-AB4A-498599512CEF_JPEG.jpeg";
+const MENTOR_IMG = "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&q=80";
+const ABOUT_IMG = "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80";
+const MEALS_IMG = "https://static.wixstatic.com/media/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg/v1/fill/w_543,h_720,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg";
+const COMMUNITY_IMG = "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80";
 
-// Social/Instagram Placeholders
-const SOCIAL_POSTS = [
-  "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/627965665_17864939904568787_5495629343880620021_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_5_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5",
-  "https://scontent-den2-1.cdninstagram.com/v/t51.71878-15/630106954_26557527413839470_6866466320700869668_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_2_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5",
-  "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/628033879_17864939838568787_7943023268721415121_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_3_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5",
-  "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/628198523_17864939487568787_5128103398848135111_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_5_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5",
-  "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/627697573_17864939133568787_7745597901954125121_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_6_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5",
-  "https://scontent-den2-1.cdninstagram.com/v/t51.71878-15/625419811_1600785954294358_9833602751248015111_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_7_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5"
+const GOOGLE_DRIVE_IMAGES = [
+  { id: "1LytFYEomz7eMVGaN-ZBDgc1L5zy70gVQ", title: "Mentorship" },
+  { id: "1LKHQnL0xVLFg6pXxkSY06bk144oFWdfv", title: "About Community" },
+];
+
+const WIXSTATIC_IMAGES = [
+  "https://static.wixstatic.com/media/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg/v1/fill/w_520,h_924,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg",
+  "https://static.wixstatic.com/media/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg/v1/fill/w_980,h_653,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg",
+  "https://static.wixstatic.com/media/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg/v1/fill/w_543,h_720,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg",
+  "https://static.wixstatic.com/media/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg/v1/crop/x_2,y_0,w_1278,h_854/fill/w_728,h_519,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/22C19768-3581-459A-AB4A-498599512CEF_JPEG.jpeg",
+];
+
+const SOCIAL_IMAGES = [
+  "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&q=80",
+  "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&q=80",
+  "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&q=80",
+  "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&q=80",
+  "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=400&q=80",
+  "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&q=80",
 ];
 
 export default function Home() {
@@ -428,7 +439,61 @@ export default function Home() {
         </div>
       </Section>
 
-      <Footer />
+      {/* === MEDIA GALLERY (Google Drive iframes) === */}
+      <Section id="media" variant="white">
+        <SectionHeader
+          label="Our Gallery"
+          title="Photos & Videos From the Tribe"
+          subtitle="Images and videos from our community events auto-load below."
+        />
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {GOOGLE_DRIVE_IMAGES.map((item) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="rounded-2xl overflow-hidden shadow-lg border border-gray-100"
+              data-testid={`iframe-gdrive-${item.id}`}
+            >
+              <iframe
+                src={`https://drive.google.com/file/d/${item.id}/preview`}
+                className="w-full aspect-video"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title={item.title}
+                loading="lazy"
+              />
+              <div className="p-4 bg-white">
+                <p className="font-display font-bold text-[#1E4E48]">{item.title}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <h3 className="font-display font-bold text-2xl text-[#1E4E48] mb-6 text-center">Event Highlights</h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {WIXSTATIC_IMAGES.map((src, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="rounded-xl overflow-hidden shadow-md group relative"
+              data-testid={`img-wixstatic-${i}`}
+            >
+              <img 
+                src={src} 
+                alt={`Event highlight ${i + 1}`} 
+                className="w-full aspect-square object-cover transition-transform group-hover:scale-105" 
+                loading="lazy"
+                referrerPolicy="no-referrer"
+              />
+            </motion.div>
+          ))}
+        </div>
+      </Section>
 
       {/* === SOCIAL FEED === */}
       <Section id="social" variant="light">
@@ -438,20 +503,34 @@ export default function Home() {
           subtitle="@goodvibetribe615"
         />
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {SOCIAL_POSTS.map((img, i) => (
+          {SOCIAL_IMAGES.map((img, i) => (
             <motion.div 
               key={i}
               whileHover={{ scale: 1.02 }}
               className="aspect-square rounded-xl overflow-hidden shadow-md group relative"
+              data-testid={`img-social-${i}`}
             >
-              <img src={img} alt={`Social post ${i + 1}`} className="w-full h-full object-cover transition-transform group-hover:scale-110" />
-              <div className="absolute inset-0 bg-[#103030]/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+              <img src={img} alt={`Community photo ${i + 1}`} className="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" />
+              <div className="absolute inset-0 bg-[#103030]/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity" style={{ visibility: 'visible' }}>
                 <span className="text-white font-bold text-sm">View Post</span>
               </div>
             </motion.div>
           ))}
         </div>
+        <div className="mt-8 text-center">
+          <a 
+            href="https://instagram.com/goodvibetribe615" 
+            target="_blank" 
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-[#F83030] font-bold hover:underline"
+            data-testid="link-instagram-profile"
+          >
+            Follow us on Instagram
+          </a>
+        </div>
       </Section>
+
+      <Footer />
     </div>
   );
 }
