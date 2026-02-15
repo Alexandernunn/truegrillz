@@ -17,12 +17,21 @@ import { useSubmitContact } from "@/hooks/use-contact";
 import { useToast } from "@/hooks/use-toast";
 
 // === Images ===
-// Unsplash placeholders for community themes
-const HERO_IMG = "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1920&q=80"; // Diverse group
-const ABOUT_IMG = "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80"; // Kids/Charity
-const MENTOR_IMG = "https://images.unsplash.com/photo-1529390003868-6c04176d375d?w=800&q=80"; // Mentorship
-const MEALS_IMG = "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80"; // Food/Meals
-const COMMUNITY_IMG = "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80"; // Gathering
+const HERO_IMG = "https://static.wixstatic.com/media/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg/v1/crop/x_2,y_0,w_1021,h_681/fill/w_1349,h_900,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg";
+const ABOUT_IMG = "https://static.wixstatic.com/media/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg/v1/fill/w_980,h_654,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg";
+const MENTOR_IMG = "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/627981294_17864939718568787_1136690152794711311_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_6_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5";
+const MEALS_IMG = "https://static.wixstatic.com/media/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg/v1/fill/w_543,h_305,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg";
+const COMMUNITY_IMG = "https://scontent-den2-1.cdninstagram.com/v/t51.71878-15/587653429_833878459251471_277270254532439369_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_9_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5";
+
+// Social/Instagram Placeholders
+const SOCIAL_POSTS = [
+  "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/627965665_17864939904568787_5495629343880620021_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_5_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5",
+  "https://scontent-den2-1.cdninstagram.com/v/t51.71878-15/630106954_26557527413839470_6866466320700869668_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_2_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5",
+  "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/628033879_17864939838568787_7943023268721415121_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_3_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5",
+  "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/628198523_17864939487568787_5128103398848135111_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_5_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5",
+  "https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/627697573_17864939133568787_7745597901954125121_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_6_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5",
+  "https://scontent-den2-1.cdninstagram.com/v/t51.71878-15/625419811_1600785954294358_9833602751248015111_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=18de2a&_nc_ohc=y4p0Q-3m6YUAX_7_H8P&_nc_ht=scontent-den2-1.cdninstagram.com&oh=00_AfC4G2P8v4WJ4f8_8W7-S5z4_8v4WJ4f8_8W7-S5z4&oe=65C4F8D5"
+];
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -420,6 +429,29 @@ export default function Home() {
       </Section>
 
       <Footer />
+
+      {/* === SOCIAL FEED === */}
+      <Section id="social" variant="light">
+        <SectionHeader 
+          label="Follow the Tribe"
+          title="Stay Connected on Social Media"
+          subtitle="@goodvibetribe615"
+        />
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {SOCIAL_POSTS.map((img, i) => (
+            <motion.div 
+              key={i}
+              whileHover={{ scale: 1.02 }}
+              className="aspect-square rounded-xl overflow-hidden shadow-md group relative"
+            >
+              <img src={img} alt={`Social post ${i + 1}`} className="w-full h-full object-cover transition-transform group-hover:scale-110" />
+              <div className="absolute inset-0 bg-[#103030]/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                <span className="text-white font-bold text-sm">View Post</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
