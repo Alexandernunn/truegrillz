@@ -170,7 +170,7 @@ export function ProgramRow({ title, subtitle, description, image, video, reverse
         className="w-full lg:w-1/2"
       >
         <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] group">
-          <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10", bgColor)} />
+          <div className={cn("absolute inset-0 opacity-10 group-hover:opacity-25 transition-opacity duration-500 z-10", bgColor)} />
           {video ? (
             <ScrollVideo src={video} title={title} />
           ) : (
