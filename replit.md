@@ -53,7 +53,7 @@ Preferred communication style: Simple, everyday language.
 
 - **PostgreSQL** — primary database, connected via `DATABASE_URL` environment variable using `pg` (node-postgres) with connection pooling
 - **Google Fonts** — Poppins and Figtree font families loaded via CSS import
-- **Unsplash** — placeholder images referenced by URL in the Home page
-- **Wix Static Media** — actual organization photos hosted on Wix CDN, referenced by URL
-- **Instagram** — social media links to `@goodvibetribe615`
+- **Wix Static Media** — all organization photos sourced from goodvibetribe.info, hosted on Wix CDN (`static.wixstatic.com`), used throughout the site (hero, about, programs, gallery, Instagram grid)
+- **Instagram** — social media links to `@goodvibetribe615`, 3x2 photo grid using Wixstatic images from the organization
+- **Mission Statement**: "I want this movement to inspire everyone to do something positive. We believe good people should benefit from doing the right thing." — displayed in hero section and about section
 - **Replit Plugins** — `@replit/vite-plugin-runtime-error-modal`, `@replit/vite-plugin-cartographer`, and `@replit/vite-plugin-dev-banner` for development environment integration

@@ -16,32 +16,27 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useSubmitContact } from "@/hooks/use-contact";
 import { useToast } from "@/hooks/use-toast";
 
-// === Images (using reliable Wixstatic + Unsplash sources) ===
-const HERO_IMG = "https://static.wixstatic.com/media/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg/v1/crop/x_2,y_0,w_1278,h_854/fill/w_728,h_519,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/22C19768-3581-459A-AB4A-498599512CEF_JPEG.jpeg";
-const MENTOR_IMG = "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&q=80";
-const ABOUT_IMG = "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80";
+// === Images (using reliable Wixstatic sources from goodvibetribe.info) ===
+const HERO_IMG = "https://static.wixstatic.com/media/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg/v1/crop/x_2,y_0,w_1278,h_854/fill/w_1200,h_800,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/22C19768-3581-459A-AB4A-498599512CEF_JPEG.jpeg";
+const MENTOR_IMG = "https://static.wixstatic.com/media/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg/v1/fill/w_800,h_533,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg";
+const ABOUT_IMG = "https://static.wixstatic.com/media/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg/v1/fill/w_800,h_800,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg";
 const MEALS_IMG = "https://static.wixstatic.com/media/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg/v1/fill/w_543,h_720,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg";
-const COMMUNITY_IMG = "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80";
-
-const GOOGLE_DRIVE_IMAGES = [
-  { id: "1LytFYEomz7eMVGaN-ZBDgc1L5zy70gVQ", title: "Mentorship" },
-  { id: "1LKHQnL0xVLFg6pXxkSY06bk144oFWdfv", title: "About Community" },
-];
+const COMMUNITY_IMG = "https://static.wixstatic.com/media/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg/v1/crop/x_2,y_0,w_1278,h_854/fill/w_800,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/22C19768-3581-459A-AB4A-498599512CEF_JPEG.jpeg";
 
 const WIXSTATIC_IMAGES = [
-  "https://static.wixstatic.com/media/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg/v1/fill/w_520,h_924,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg",
-  "https://static.wixstatic.com/media/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg/v1/fill/w_980,h_653,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg",
-  "https://static.wixstatic.com/media/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg/v1/fill/w_543,h_720,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg",
-  "https://static.wixstatic.com/media/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg/v1/crop/x_2,y_0,w_1278,h_854/fill/w_728,h_519,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/22C19768-3581-459A-AB4A-498599512CEF_JPEG.jpeg",
+  "https://static.wixstatic.com/media/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg/v1/fill/w_520,h_520,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg",
+  "https://static.wixstatic.com/media/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg/v1/fill/w_520,h_520,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg",
+  "https://static.wixstatic.com/media/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg/v1/fill/w_520,h_520,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg",
+  "https://static.wixstatic.com/media/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg/v1/crop/x_2,y_0,w_1278,h_854/fill/w_520,h_520,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/22C19768-3581-459A-AB4A-498599512CEF_JPEG.jpeg",
 ];
 
-const SOCIAL_IMAGES = [
-  "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&q=80",
-  "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&q=80",
-  "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&q=80",
-  "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&q=80",
-  "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=400&q=80",
-  "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&q=80",
+const INSTAGRAM_GRID_IMAGES = [
+  { src: "https://static.wixstatic.com/media/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg/v1/crop/x_2,y_0,w_1278,h_854/fill/w_600,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/22C19768-3581-459A-AB4A-498599512CEF_JPEG.jpeg", caption: "Forward together" },
+  { src: "https://static.wixstatic.com/media/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg/v1/fill/w_600,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg", caption: "Leaving a positive impact" },
+  { src: "https://static.wixstatic.com/media/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg/v1/fill/w_600,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg", caption: "Adopt a Bus Stop" },
+  { src: "https://static.wixstatic.com/media/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg/v1/fill/w_600,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg", caption: "Community events" },
+  { src: "https://static.wixstatic.com/media/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg/v1/fill/w_600,h_600,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg", caption: "Still rising" },
+  { src: "https://static.wixstatic.com/media/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg/v1/crop/x_0,y_0,w_1905,h_693/fill/w_600,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg", caption: "We're all figuring it out" },
 ];
 
 export default function Home() {
@@ -93,8 +88,11 @@ export default function Home() {
               More Than an Organization. <br className="hidden md:block" />
               <span className="text-[#F8F898]">A Way of Life.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-6 max-w-2xl mx-auto">
               Good Vibe Tribe unites Nashville through mentorship, youth programs, and community support — inspiring growth, hope, and lasting change.
+            </p>
+            <p className="text-lg text-[#F8F898]/90 italic leading-relaxed mb-10 max-w-2xl mx-auto">
+              "I want this movement to inspire everyone to do something positive. We believe good people should benefit from doing the right thing."
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -140,7 +138,7 @@ export default function Home() {
               From mentorship programs to community giveaways, we create spaces where genuine connections thrive and every person finds their potential.
             </p>
             <blockquote className="border-l-4 border-[#F83030] pl-6 italic text-xl text-[#1E4E48] font-medium">
-              "It's not about me — it's about us."
+              "I want this movement to inspire everyone to do something positive. We believe good people should benefit from doing the right thing."
               <footer className="text-sm text-gray-500 mt-2 not-italic font-sans">— Good Vibe Tribe</footer>
             </blockquote>
           </motion.div>
@@ -439,48 +437,26 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* === MEDIA GALLERY (Google Drive iframes) === */}
+      {/* === GALLERY WITH GOODVIBETRIBE.INFO IMAGES === */}
       <Section id="media" variant="white">
         <SectionHeader
-          label="Our Gallery"
-          title="Photos & Videos From the Tribe"
-          subtitle="Images and videos from our community events auto-load below."
+          label="From goodvibetribe.info"
+          title="Our Community in Action"
+          subtitle="Real photos from our events, programs, and the people who make it all happen."
         />
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {GOOGLE_DRIVE_IMAGES.map((item) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="rounded-2xl overflow-hidden shadow-lg border border-gray-100"
-              data-testid={`iframe-gdrive-${item.id}`}
-            >
-              <iframe
-                src={`https://drive.google.com/file/d/${item.id}/preview`}
-                className="w-full aspect-video"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-                title={item.title}
-                loading="lazy"
-              />
-              <div className="p-4 bg-white">
-                <p className="font-display font-bold text-[#1E4E48]">{item.title}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
 
-        <h3 className="font-display font-bold text-2xl text-[#1E4E48] mb-6 text-center">Event Highlights</h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           {WIXSTATIC_IMAGES.map((src, i) => (
-            <motion.div
+            <motion.a
               key={i}
+              href="https://www.goodvibetribe.info/"
+              target="_blank"
+              rel="noreferrer"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="rounded-xl overflow-hidden shadow-md group relative"
+              className="rounded-xl overflow-hidden shadow-md group relative block"
               data-testid={`img-wixstatic-${i}`}
             >
               <img 
@@ -490,42 +466,64 @@ export default function Home() {
                 loading="lazy"
                 referrerPolicy="no-referrer"
               />
-            </motion.div>
+              <div className="absolute inset-0 bg-[#1E4E48]/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity" style={{ visibility: 'visible' }}>
+                <span className="text-white font-bold text-sm">View on goodvibetribe.info</span>
+              </div>
+            </motion.a>
           ))}
+        </div>
+
+        <div className="text-center">
+          <a
+            href="https://www.goodvibetribe.info/"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 bg-[#1E4E48] text-white font-bold px-8 py-3 rounded-full shadow-lg transition-transform hover:scale-105"
+            data-testid="link-gvt-site"
+          >
+            Visit goodvibetribe.info
+          </a>
         </div>
       </Section>
 
-      {/* === SOCIAL FEED === */}
+      {/* === INSTAGRAM 3x2 PHOTO GRID === */}
       <Section id="social" variant="light">
         <SectionHeader 
-          label="Follow the Tribe"
-          title="Stay Connected on Social Media"
-          subtitle="@goodvibetribe615"
+          label="@goodvibetribe615"
+          title="Follow Us on Instagram"
+          subtitle="Photos from our community — real moments, real impact."
         />
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {SOCIAL_IMAGES.map((img, i) => (
-            <motion.div 
+        <div className="grid grid-cols-3 grid-rows-2 gap-4 max-w-4xl mx-auto">
+          {INSTAGRAM_GRID_IMAGES.map((img, i) => (
+            <motion.a
               key={i}
+              href="https://instagram.com/goodvibetribe615"
+              target="_blank"
+              rel="noreferrer"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
               whileHover={{ scale: 1.02 }}
-              className="aspect-square rounded-xl overflow-hidden shadow-md group relative"
-              data-testid={`img-social-${i}`}
+              className="aspect-square rounded-xl overflow-hidden shadow-md group relative block"
+              data-testid={`img-instagram-${i}`}
             >
-              <img src={img} alt={`Community photo ${i + 1}`} className="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" />
+              <img src={img.src} alt={img.caption} className="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" referrerPolicy="no-referrer" />
               <div className="absolute inset-0 bg-[#103030]/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity" style={{ visibility: 'visible' }}>
-                <span className="text-white font-bold text-sm">View Post</span>
+                <span className="text-white font-bold text-sm text-center px-2">{img.caption}</span>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
-        <div className="mt-8 text-center">
+        <div className="mt-10 text-center">
           <a 
             href="https://instagram.com/goodvibetribe615" 
             target="_blank" 
             rel="noreferrer"
-            className="inline-flex items-center gap-2 text-[#F83030] font-bold hover:underline"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#F83030] to-[#E1306C] text-white font-bold px-8 py-3 rounded-full shadow-lg transition-transform hover:scale-105"
             data-testid="link-instagram-profile"
           >
-            Follow us on Instagram
+            Follow @goodvibetribe615 on Instagram
           </a>
         </div>
       </Section>
