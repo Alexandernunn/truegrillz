@@ -59,9 +59,10 @@ interface EventCardProps {
   description: string;
   category: string;
   color: "red" | "green" | "teal";
+  image?: string;
 }
 
-export function EventCard({ title, date, location, description, category, color }: EventCardProps) {
+export function EventCard({ title, date, location, description, category, color, image }: EventCardProps) {
   const btnColor = color === 'red' ? 'bg-[#F83030] hover:bg-[#C92828]' : color === 'green' ? 'bg-[#18A058] hover:bg-[#107040]' : 'bg-[#1E4E48] hover:bg-[#103030]';
   const badgeColor = color === 'red' ? 'bg-[#F83030]' : color === 'green' ? 'bg-[#18A058]' : 'bg-[#1E4E48]';
 
@@ -71,7 +72,9 @@ export function EventCard({ title, date, location, description, category, color 
       className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col h-full border border-gray-100 group"
     >
       <div className="h-48 bg-gray-200 relative overflow-hidden">
-        {/* Placeholder gradient/image */}
+        {image && (
+          <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" referrerPolicy="no-referrer" />
+        )}
         <div className={cn("absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity", badgeColor)} />
         <div className="absolute top-4 left-4">
           <span className={cn("px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider", badgeColor)}>

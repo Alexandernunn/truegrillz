@@ -263,6 +263,7 @@ export default function Home() {
             description="Providing essential items, warm meals, and community connection to Nashville families in need."
             location="Nashville, TN"
             color="red"
+            image="https://static.wixstatic.com/media/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg/v1/fill/w_700,h_350,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg"
           />
           <EventCard 
             title="Youth Mentorship Session"
@@ -271,6 +272,7 @@ export default function Home() {
             description="One-on-one and group mentoring sessions connecting Nashville youth with experienced guides."
             location="East Nashville Center"
             color="green"
+            image="https://static.wixstatic.com/media/3b4e52_c076dc6a72c244a4a4ba89dcd6e6df9d~mv2.jpeg/v1/crop/x_2,y_0,w_1278,h_854/fill/w_700,h_350,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/22C19768-3581-459A-AB4A-498599512CEF_JPEG.jpeg"
           />
           <EventCard 
             title="Adopt a Bus Stop"
@@ -279,6 +281,7 @@ export default function Home() {
             description="Help prepare and distribute meals to children at bus stops across Nashville communities."
             location="Various Locations"
             color="teal"
+            image="https://static.wixstatic.com/media/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg/v1/fill/w_700,h_350,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_cac5239a894f450ba6a41e8bde13fa6ef000.jpg"
           />
         </div>
       </Section>
