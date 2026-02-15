@@ -1,0 +1,531 @@
+# Good Vibe Tribe — Complete Replit Agent Prompt
+## Copy everything below the line into Replit Agent
+
+---
+
+```
+Build a complete, sophisticated nonprofit website for "Good Vibe Tribe" — a Nashville, Tennessee-based community relief nonprofit. This is a full redesign of their existing site (goodvibetribe.info) with elevated, professional design and all original content preserved but rewritten in more polished, trustworthy nonprofit language. The site should look and feel like a nationally recognized, established nonprofit — clean, modern, animated, and emotionally compelling.
+
+============================
+TECHNOLOGY STACK
+============================
+- Vanilla HTML5, CSS3, JavaScript (NO frameworks like React/Vue — keep it simple)
+- Use Vite via Replit's "HTML, CSS, JS" template
+- All libraries loaded via CDN (no npm installs needed)
+- Single-page scrolling architecture with smooth-scroll anchor navigation
+- Fully responsive (mobile-first design)
+
+CDN Libraries to include:
+<!-- In <head> -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<!-- Before </body> -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+============================
+BRAND COLOR SCHEME — EXTRACTED FROM OFFICIAL LOGO
+============================
+The logo features a red lotus/tribal flower with green leaves on a dark teal background.
+These are the EXACT brand colors — do NOT deviate:
+
+:root {
+  /* === PRIMARY: Vibrant Red (from lotus flower, diamond, outer ring text) === */
+  --primary: #F83030;            /* Core brand red */
+  --primary-dark: #C92828;       /* Hover/active state */
+  --primary-light: #FF5A5A;      /* Lighter tint for accents */
+
+  /* === SECONDARY: Rich Green (from lotus leaves and plant elements) === */
+  --secondary: #18A058;          /* Vibrant leaf green */
+  --secondary-dark: #207050;     /* Deep forest green */
+  --secondary-light: #69CE72;    /* Light fresh green */
+
+  /* === TERTIARY: Dark Teal (from logo background gradient) === */
+  --teal: #1E4E48;               /* Dark teal — authority, trust */
+  --teal-dark: #103030;          /* Deepest teal/near-black */
+  --teal-light: #285850;         /* Medium teal */
+
+  /* === ACCENT: Warm Gold/Cream (from inner circle detail lines) === */
+  --accent: #F8F898;             /* Soft gold/cream for highlights */
+  --accent-dark: #D4D060;        /* Deeper gold for hover */
+
+  /* === NEUTRALS === */
+  --text-dark: #1A1A2E;          /* Near-black for body text */
+  --text-medium: #4A4A5A;        /* Medium gray for secondary text */
+  --text-light: #F5F5F5;         /* Off-white for text on dark backgrounds */
+  --bg-white: #FFFFFF;
+  --bg-cream: #F8FFF5;           /* Very light green-tinted cream (brand-aligned) */
+  --bg-light: #F0F7F4;           /* Cool green-tinted light background */
+  --bg-dark: #103030;            /* Deepest teal from logo — for footer, dark sections */
+
+  /* === EFFECTS === */
+  --gradient-hero: linear-gradient(135deg, rgba(248,48,48,0.80) 0%, rgba(30,78,72,0.92) 100%);
+  --gradient-cta: linear-gradient(135deg, var(--primary), var(--teal));
+  --gradient-green: linear-gradient(135deg, var(--secondary-dark), var(--secondary));
+  --shadow-sm: 0 2px 8px rgba(16,48,48,0.08);
+  --shadow-md: 0 4px 20px rgba(16,48,48,0.12);
+  --shadow-lg: 0 10px 40px rgba(16,48,48,0.15);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --transition: all 0.3s ease;
+}
+
+COLOR USAGE RULES:
+- Primary red (#F83030) → CTA buttons, highlights, urgency, donate buttons, active states
+- Secondary green (#18A058) → Success states, program cards, growth themes, secondary buttons
+- Dark teal (#1E4E48 / #103030) → Footer, dark overlay sections, nav when scrolled, headings
+- Accent gold (#F8F898) → Subtle highlights, decorative elements, badge backgrounds
+- Section backgrounds alternate: white → bg-cream → white → bg-dark → white → bg-light
+- Cards and buttons should use red OR green (never both on same element)
+- Dark sections use teal backgrounds with white/cream text
+
+============================
+LOGO
+============================
+- The logo file is "Logo__2_.png" — place it in /images/ folder
+- Use it in the navbar (left side) at approximately 50px height
+- Use it in the footer
+- The logo is circular with "THE GOOD VIBE TRIBE" text around the top and "NASHVILLE" at the bottom, with a stylized red lotus/tribal flower and green leaves in the center
+- On transparent/white backgrounds the logo works as-is
+- On dark backgrounds, the logo still works since it has its own teal background built in
+
+============================
+TYPOGRAPHY
+============================
+- Headings (h1-h3, nav links, buttons): font-family: 'Poppins', sans-serif;
+- Body text (p, li, card text, descriptions): font-family: 'Figtree', sans-serif;
+- h1: clamp(2.5rem, 5vw, 4.5rem), font-weight: 800
+- h2: clamp(2rem, 4vw, 3rem), font-weight: 700
+- h3: clamp(1.25rem, 2.5vw, 1.75rem), font-weight: 600
+- Body: 1.1rem, line-height: 1.7, font-weight: 400
+- All text should use proper sentence case (NOT the ALL CAPS title case from the original site)
+
+============================
+FILE STRUCTURE
+============================
+/
+├── index.html
+├── style.css
+├── script.js
+└── /images/
+    ├── Logo__2_.png  (the official logo)
+    └── (use placeholder images from https://images.unsplash.com — community, youth, Nashville, volunteering themes)
+
+============================
+WEBSITE SECTIONS (in order, all on index.html)
+============================
+
+--- SECTION 1: STICKY NAVIGATION BAR ---
+- Fixed position, full width, z-index: 1000
+- TRANSPARENT background initially (white text), transitions to white background with dark text + shadow after 50px scroll
+- When scrolled: background white, backdrop-filter: blur(10px), shadow
+- Padding shrinks from 1.5rem to 0.75rem on scroll
+- Left side: Official logo image (Logo__2_.png) at ~50px height + text "Good Vibe Tribe" in Poppins Bold
+- Nav links (center or right): Home | About | Programs | Impact | Events | Contact
+- All nav links are smooth-scroll anchors (#home, #about, #programs, #impact, #events, #contact)
+- Right side: "Donate" button (red primary color, rounded pill shape, prominent)
+- Mobile: Hamburger menu icon that opens a full-screen overlay nav with staggered fade-in animation for each link
+- Active nav link highlighting based on scroll position (IntersectionObserver)
+
+JavaScript for scroll behavior:
+window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+--- SECTION 2: HERO SECTION ---
+- Full viewport height (min-height: 100vh), display flex, centered content
+- Background: Use an Unsplash community/group photo (Nashville, diverse group of people, volunteering, or urban community)
+- Gradient overlay: var(--gradient-hero) which is red-to-teal matching the logo
+- Content (white text, centered):
+  - Small label/badge above headline: "Nashville Community Relief" (with a small decorative line or dot)
+  - Headline (h1, AOS fade-up): "More Than an Organization. A Way of Life."
+  - Subtext (p, AOS fade-up delay 200ms): "Good Vibe Tribe unites Nashville through mentorship, youth programs, and community support — inspiring growth, hope, and lasting change. Together, we prove that when people stick together, every life can flourish."
+  - Two buttons (AOS fade-up delay 400ms):
+    - "Get Involved" → scrolls to #events (solid white background, dark teal text)
+    - "Donate Now" → scrolls to #donate (outline button: white border, white text, hover fills red)
+- Subtle parallax effect on background image (use background-attachment: fixed OR GSAP)
+- Add a gentle floating animation to a decorative element (small circle or leaf SVG in green)
+- Bottom: Subtle scroll-down indicator (animated bouncing chevron in white)
+
+--- SECTION 3: ABOUT / WHO WE ARE ---
+id="about"
+- Background: var(--bg-cream)
+- Layout: Two-column on desktop (text left, image right), stacks on mobile
+- Left column (AOS fade-right):
+  - Small label in green: "Who We Are"
+  - Heading (h2) in dark teal: "Empowering Communities Through Kindness and Connection"
+  - Body text: "Good Vibe Tribe is committed to fostering meaningful community service through engaging events aimed at uplifting individuals and promoting collaboration. From mentorship programs to community giveaways, we create spaces where genuine connections thrive and every person finds their potential. We believe that perfect people don't exist — but genuine people do. Our foundation is built on straight-forward compassion, positive energy, and the conviction that small, caring gestures can transform the world, one life at a time."
+  - A styled quote block (left border in red, italic text): ""It's not about me — it's about us." — Good Vibe Tribe"
+- Right column (AOS fade-left):
+  - Large rounded image (border-radius: 20px, box-shadow with teal tint) showing community activity
+  - Small overlapping accent card in the bottom-left corner of the image with green background, white text showing: "Est. Nashville, TN" with a map pin icon
+
+--- SECTION 4: OUR PURPOSE / PILLARS ---
+id="purpose"
+- Background: var(--bg-white)
+- Section header (centered, AOS fade-up):
+  - Small label in red: "Our Mission Matters"
+  - Heading (h2) in dark teal: "The Three Pillars That Guide Everything We Do"
+- Three cards in a row (responsive grid), each with AOS fade-up and staggered delays (100ms, 200ms, 300ms):
+
+Card 1 — Authenticity:
+  - Icon: Font Awesome fa-heart (displayed in a circle with red background, white icon)
+  - Title (h3): "Authenticity"
+  - Subtitle (green text): "Straight-Forward Compassion"
+  - Body: "We lead with genuine care and positive energy, striving to make the world better one thoughtful gesture at a time. We don't pretend to be perfect — we're real people with good intentions, committed to pushing our community toward prosperity."
+  - Bottom accent line: red, animates scaleX 0→1 on hover
+
+Card 2 — Mentorship:
+  - Icon: Font Awesome fa-compass (displayed in a circle with green background, white icon)
+  - Title (h3): "Mentorship"
+  - Subtitle (green text): "Guiding the Next Generation"
+  - Body: "Through humility and honesty, we guide young minds away from adversity and toward opportunity. Our mentorship programs demonstrate the transformative power of genuine love and compassion — helping individuals learn, grow, and build lasting confidence."
+  - Bottom accent line: green, animates scaleX 0→1 on hover
+
+Card 3 — Community:
+  - Icon: Font Awesome fa-users (displayed in a circle with teal background, white icon)
+  - Title (h3): "Community"
+  - Subtitle (green text): "Strength in Togetherness"
+  - Body: "We host meaningful events throughout the year — from giveaways and paintball outings to workshops and volunteer opportunities — each designed to strengthen bonds and foster a genuine sense of belonging. Everyone is welcome in our tribe."
+  - Bottom accent line: teal, animates scaleX 0→1 on hover
+
+Card styling:
+  - White background, border-radius: 16px, padding: 2rem
+  - Subtle shadow (teal-tinted), hover: translateY(-8px) with enhanced shadow
+  - Icon circle: 70px diameter, centered above text
+
+--- SECTION 5: PROGRAMS & SERVICES ---
+id="programs"
+- Background: var(--bg-light)
+- Section header (centered, AOS fade-up):
+  - Small label in green: "What We Do"
+  - Heading (h2) in dark teal: "Programs That Create Lasting Impact"
+- Use alternating left-right layout (image + text blocks) for each program:
+
+Program 1 — Mentorship Program:
+  - Image on left (AOS fade-right), text on right (AOS fade-left)
+  - Small tag (red background, white text): "Youth Development"
+  - Title (h3): "Guiding Young Minds"
+  - Body: "Our mentorship program connects experienced volunteers with Nashville's youth, providing dedicated support, guidance, and resources. Through meaningful one-on-one relationships, young people gain the confidence and skills they need to chart their own path to success."
+  - CTA link (red text with arrow): "Learn More →"
+
+Program 2 — Adopt a Bus Stop:
+  - Image on right, text on left (flipped layout)
+  - Small tag (green background, white text): "Child Nutrition"
+  - Title (h3): "Adopt a Bus Stop"
+  - Body: "Every child deserves access to daily nutrition without exception. Our Adopt a Bus Stop initiative ensures that kids across Nashville have the meals they need to learn, grow, and thrive — powered by individual donors who see the urgency of feeding our next generation."
+  - CTA link (green text with arrow): "Support This Program →"
+
+Program 3 — Community Giveaways & Events:
+  - Image on left, text on right
+  - Small tag (teal background, white text): "Community Building"
+  - Title (h3): "Community Events & Giveaways"
+  - Body: "From our annual community giveaways to concerts, paintball outings, and volunteer drives, our events bring Nashville together. Each gathering creates opportunities to connect, share experiences, and build the kind of community spirit that changes neighborhoods."
+  - CTA link (red text with arrow): "See Upcoming Events →"
+
+--- SECTION 6: IMPACT BY THE NUMBERS ---
+id="impact"
+- Background: Dark overlay section with parallax background image (community photo)
+- Overlay: var(--bg-dark) (#103030) with 88% opacity
+- All text is white/cream
+- Section header (centered, AOS fade-up):
+  - Heading (h2, white): "The Ripple Effect of Generosity"
+  - Subtext (cream): "Every donation, every volunteer hour, every act of kindness creates waves of positive change across Nashville."
+- Four animated counter stats in a row (responsive grid):
+  - Each stat: Large number (white, Poppins Bold) with animated counting on scroll into view
+  - Use IntersectionObserver + requestAnimationFrame
+  - Plus symbol (+) after each number in red
+
+  Stat 1: Target 500 | Label: "Youth Mentored" | Icon: fa-graduation-cap
+  Stat 2: Target 1000 | Label: "Meals Provided" | Icon: fa-utensils
+  Stat 3: Target 50 | Label: "Community Events" | Icon: fa-calendar-check
+  Stat 4: Target 200 | Label: "Active Volunteers" | Icon: fa-hand-holding-heart
+
+Counter animation JavaScript:
+function animateCounter(el, target) {
+  let duration = 2000, startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(eased * target).toLocaleString();
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target.toLocaleString();
+  };
+  requestAnimationFrame(step);
+}
+// Trigger with IntersectionObserver at 50% threshold, run once
+
+--- SECTION 7: TESTIMONIALS / COMMUNITY VOICES ---
+id="voices"
+- Background: var(--bg-cream)
+- Section header (centered):
+  - Small label in green: "Community Voices"
+  - Heading (h2) in dark teal: "Stories From the Tribe"
+- Swiper.js carousel with autoplay (6s delay), fade effect, pagination dots (red active dot)
+- 4 testimonial slides, each with:
+  - Large quotation mark icon (decorative, faded green)
+  - Quote text (italic, 1.2rem, dark teal)
+  - Person name and role (bold, red accent)
+  - Small circular avatar placeholder
+
+Testimonial 1:
+  Quote: "Good Vibe Tribe showed me that community isn't just a word — it's a way of life. The mentorship I received gave me the confidence to pursue my dreams."
+  Name: "Community Member"
+
+Testimonial 2:
+  Quote: "Watching our neighborhood come together at the annual giveaway reminded me why Nashville is special. This organization doesn't just talk about change — they make it happen."
+  Name: "Nashville Resident"
+
+Testimonial 3:
+  Quote: "The Adopt a Bus Stop program ensures my kids never go hungry. Knowing someone cares enough to show up every day means the world to our family."
+  Name: "Program Participant"
+
+Testimonial 4:
+  Quote: "Volunteering with GVT has been the most rewarding experience. The positive energy is contagious, and every event feels like coming home to family."
+  Name: "GVT Volunteer"
+
+Swiper config:
+new Swiper('.testimonial-swiper', {
+  slidesPerView: 1,
+  spaceBetween: 30,
+  loop: true,
+  autoplay: { delay: 6000, disableOnInteraction: false, pauseOnMouseEnter: true },
+  pagination: { el: '.swiper-pagination', clickable: true },
+  effect: 'fade',
+  fadeEffect: { crossFade: true }
+});
+
+--- SECTION 8: EVENTS ---
+id="events"
+- Background: var(--bg-white)
+- Section header (centered, AOS fade-up):
+  - Small label in red: "Get Involved"
+  - Heading (h2) in dark teal: "Upcoming Events & Gatherings"
+  - Subtext: "Join us at our next event and experience the power of community firsthand."
+- Three event cards in a row (or Swiper carousel on mobile):
+
+Event Card 1:
+  - Date badge (red background, white text): "2025"
+  - Title: "Annual Community Giveaway"
+  - Description: "Our signature event providing essential items, warm meals, and community connection to Nashville families in need."
+  - Location with icon: "Nashville, TN"
+  - Button (red): "Register Now"
+
+Event Card 2:
+  - Date badge (green background, white text): "Monthly"
+  - Title: "Youth Mentorship Sessions"
+  - Description: "One-on-one and group mentoring sessions connecting Nashville youth with experienced guides and role models."
+  - Location with icon: "Nashville, TN"
+  - Button (green): "Learn More"
+
+Event Card 3:
+  - Date badge (teal background, white text): "Ongoing"
+  - Title: "Adopt a Bus Stop Volunteer Days"
+  - Description: "Help prepare and distribute meals to children at bus stops across Nashville communities."
+  - Location with icon: "Nashville, TN"
+  - Button (teal): "Volunteer"
+
+Card styling: White background, rounded, shadow, top image placeholder, hover lift effect with colored top-border accent
+
+--- SECTION 9: DONATION SECTION ---
+id="donate"
+- Background: Full-width section using var(--gradient-cta) (red to teal)
+- All text white, centered
+- Content (AOS fade-up):
+  - Heading (h2): "Pay It Forward"
+  - Subtext: "Every contribution, no matter the size, helps us bless someone who needs it most. Powered by faith, fueled by community — together, everyone deserves a chance."
+  - Two donation option cards side by side (white background, dark text, rounded):
+
+  Card 1 — General Donation:
+    - Title (dark teal): "Support Our Mission"
+    - Description: "Your generosity funds mentorship programs, community events, and direct support for Nashville families."
+    - Frequency toggle pill buttons: One-time | Monthly (active state = red)
+    - Preset amount buttons in grid: $25, $50, $100, $250 (one highlighted in red as suggested)
+    - Custom amount input field
+    - "Donate Now" button (red, full width, pill shape)
+
+  Card 2 — Adopt a Bus Stop:
+    - Title (dark teal): "Adopt a Bus Stop"
+    - Description: "Every dollar feeds a child. No discrimination, no exceptions — just nourishment for the next generation."
+    - Frequency toggle: One-time | Monthly | Yearly (active state = green)
+    - Preset amounts: $10, $25, $50, $100
+    - Custom amount input field
+    - "Feed a Child Today" button (green, full width, pill shape)
+
+  NOTE: These forms are UI mockups. Include a small note at the bottom: "Secure payment processing coming soon. For immediate donations, please contact us directly."
+
+--- SECTION 10: INSTAGRAM / SOCIAL FEED ---
+id="social"
+- Background: var(--bg-light)
+- Section header (centered):
+  - Small label in red: "Follow the Tribe"
+  - Heading (h2): "Stay Connected on Social Media"
+  - Instagram handle link (green): "@goodvibetribe615"
+- Grid of 6 placeholder "Instagram post" cards (3x2 desktop, 2x3 tablet, 1 col mobile)
+  - Each: Square aspect ratio, rounded corners, hover overlay (dark teal with opacity) with Instagram icon and "View Post"
+  - Use community/inspirational placeholder images from Unsplash
+- Below grid: Large Instagram follow button with Instagram gradient background
+
+--- SECTION 11: CONTACT ---
+id="contact"
+- Background: var(--bg-cream)
+- Two-column layout: Contact info left, form right
+- Left column (AOS fade-right):
+  - Heading (h2, dark teal): "Let's Build Something Together"
+  - Body: "Whether you want to volunteer, partner, donate, or simply learn more about our mission, we'd love to hear from you. Reach out and become part of the tribe."
+  - Contact details with Font Awesome icons (green icons):
+    - Phone: (615) 600-6083
+    - Instagram: @goodvibetribe615 (link to https://www.instagram.com/goodvibetribe615/)
+    - Location: Nashville, Tennessee
+  - Social media icon links (Instagram)
+
+- Right column (AOS fade-left):
+  - Contact form:
+    - Full Name (text input)
+    - Email (email input)
+    - Subject (dropdown: General Inquiry, Volunteer, Partnership, Donation Question, Other)
+    - Message (textarea)
+    - Submit button: "Send Message" (red primary, pill shape)
+  - Input styling: Clean with bottom border only, focus state changes border to green, floating labels
+
+--- SECTION 12: FOOTER ---
+- Background: var(--bg-dark) (#103030 — deepest teal from logo)
+- Text: white and light gray
+- Three columns:
+  Column 1 — Brand:
+    - Logo image (Logo__2_.png) at ~60px
+    - "Good Vibe Tribe" text (Poppins Bold, white)
+    - Tagline: "Empowering Nashville Through Kindness, Mentorship, and Community"
+    - Social icon: Instagram (link to @goodvibetribe615)
+
+  Column 2 — Quick Links:
+    - Home, About, Programs, Events, Donate, Contact (smooth-scroll anchor links)
+    - Links in light gray, hover to white with red underline
+
+  Column 3 — Contact:
+    - Phone: (615) 600-6083
+    - Location: Nashville, TN
+    - Instagram: @goodvibetribe615
+
+- Bottom bar (slightly darker, separated by thin line):
+  - "© 2025 Good Vibe Tribe. All Rights Reserved."
+  - "Nashville Community Relief Nonprofit"
+  - "Powered by Faith and Community ✊"
+
+============================
+ANIMATION & INTERACTION SPECS
+============================
+
+1. AOS Initialization:
+AOS.init({
+  duration: 700,
+  once: true,
+  offset: 100,
+  easing: 'ease-out-cubic'
+});
+
+2. GSAP ScrollTrigger for hero:
+gsap.registerPlugin(ScrollTrigger);
+gsap.from('.hero h1', { y: 60, opacity: 0, duration: 1.2, ease: 'power3.out' });
+gsap.from('.hero p', { y: 40, opacity: 0, duration: 1, delay: 0.3, ease: 'power3.out' });
+gsap.from('.hero-buttons', { y: 30, opacity: 0, duration: 0.8, delay: 0.6, ease: 'power3.out' });
+
+3. Scroll chevron bounce:
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+.scroll-indicator { animation: bounce 2s infinite; }
+
+4. Card hover (all cards):
+.card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+
+5. Button hover:
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(248,48,48,0.4); }
+.btn-secondary:hover { box-shadow: 0 8px 25px rgba(24,160,88,0.4); }
+
+6. Nav link active state: IntersectionObserver on each section
+
+7. Mobile hamburger:
+- Three lines → X animation on toggle
+- Full-screen overlay: background var(--bg-dark), backdrop-filter: blur(10px)
+- Links stagger in with 100ms delays
+
+8. Smooth scroll:
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+9. Loading screen:
+- Simple fade-out preloader with logo + "Good Vibe Tribe" text
+- Disappears after 1.2 seconds with opacity transition
+
+10. Reduced motion:
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+============================
+GLOBAL DESIGN RULES
+============================
+- Max content width: 1200px, centered
+- Section padding: 100px top/bottom (60px on mobile)
+- All images: border-radius: 16px
+- Buttons: border-radius: 50px (pill), padding: 14px 32px, font-weight: 600
+- Primary button: background var(--primary) #F83030, white text
+- Secondary button: background var(--secondary) #18A058, white text
+- Outline button: transparent, border 2px, matching color text
+- All transitions: 0.3s ease
+- Alternating section backgrounds for visual rhythm
+- Small decorative elements: dots, thin accent lines, organic leaf shapes as background SVGs (using brand green)
+- Minimum touch target: 44px
+- object-fit: cover on all images
+- ::selection { background: var(--primary-light); color: white; }
+
+============================
+RESPONSIVE BREAKPOINTS
+============================
+- Desktop: > 1024px
+- Tablet: 768px - 1024px
+- Mobile: < 768px
+- Small mobile: < 480px
+
+============================
+PLACEHOLDER IMAGES (Unsplash)
+============================
+- Hero: https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1920&q=80
+- About: https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80
+- Mentorship: https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&q=80
+- Bus Stop: https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80
+- Events: https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80
+- Impact bg: https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1920&q=80
+- Instagram grid: 6 different warm community/people photos from Unsplash
+
+============================
+CRITICAL NOTES
+============================
+1. Single index.html + style.css + script.js — simple Replit structure
+2. All content above is FINAL — no lorem ipsum anywhere
+3. The design should feel warm, genuine, faith-informed but NOT overly religious — welcoming to ALL
+4. Emphasis on community, togetherness, authenticity, and Nashville pride
+5. The site should feel like an established, trustworthy nonprofit — NOT a startup or personal blog
+6. Every section should have smooth scroll-triggered animations
+7. Donation forms are functional UI (toggles, amount selection) even without payment processing
+8. Mobile experience must be excellent — hamburger animation, touch-friendly, responsive grids
+9. Font Awesome icons throughout for visual richness
+10. Preloader animation: fade-out with logo after 1.2 seconds
+11. ALL BRAND COLORS MUST MATCH THE LOGO: Red #F83030, Green #18A058, Teal #1E4E48/#103030
+```
