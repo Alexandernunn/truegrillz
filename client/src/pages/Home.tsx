@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 import { ArrowDown, Heart, Check } from "lucide-react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import adoptBusStopVideo from "@assets/AQO1WTN4NrnqaH1Ni9YwDlw9OkGWpL0tpqS2ZbhLYcCe7F6yXPdRot8A84UA_9_1771138179054.mp4";
+import aboutVideo from "@assets/bus_stops_video.mp4";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -39,6 +40,47 @@ const INSTAGRAM_GRID_IMAGES = [
   { src: "https://static.wixstatic.com/media/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg/v1/fill/w_600,h_600,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/3b4e52_8a80efdc057644ab906504526c278af6f000.jpg", caption: "Still rising" },
   { src: "https://static.wixstatic.com/media/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg/v1/crop/x_0,y_0,w_1905,h_693/fill/w_600,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3b4e52_09e44ec8791342a38b9fafe125928840~mv2.jpg", caption: "We're all figuring it out" },
 ];
+
+function ScrollVideo({ src, className }: { src: string; className?: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+    if (!video || !container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={containerRef} className={className}>
+      <video
+        ref={videoRef}
+        src={src}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className="w-full h-full object-cover"
+      />
+    </div>
+  );
+}
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -151,7 +193,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <img src={ABOUT_IMG} alt="Volunteers" className="rounded-[2rem] shadow-2xl w-full object-cover aspect-square" />
+            <ScrollVideo src={aboutVideo} className="rounded-[2rem] shadow-2xl w-full overflow-hidden aspect-square" />
             <div className="absolute -bottom-8 -left-8 bg-[#18A058] text-white p-6 rounded-2xl shadow-xl hidden md:block">
               <p className="font-display font-bold text-2xl">Est. 2023</p>
               <p className="text-white/80">Nashville, TN</p>
