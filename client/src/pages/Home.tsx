@@ -1,9 +1,10 @@
 import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowRight, Heart, Users, Star } from "lucide-react";
-import adoptBusStopVideo from "@assets/AQO1WTN4NrnqaH1Ni9YwDlw9OkGWpL0tpqS2ZbhLYcCe7F6yXPdRot8A84UA_9_1771138179054.mp4";
-import aboutVideo from "@assets/bus_stops_video.mp4";
 import { Link } from "wouter";
+
+const adoptBusStopVideo = "/adopt-bus-stop.mp4";
+const aboutVideo = "/about-video.mp4";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
