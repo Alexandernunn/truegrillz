@@ -139,6 +139,41 @@ export default function Home() {
         </motion.div>
       </section>
 
+      <Section id="purpose" variant="white">
+        <SectionHeader
+          label="Our Mission Matters"
+          title="The Three Pillars That Guide Everything We Do"
+          subtitle="Built on straight-forward compassion, positive energy, and conviction."
+        />
+
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          <PillarCard
+            title="Authenticity"
+            subtitle="Straight-Forward Compassion"
+            description="We lead with genuine care and positive energy. We don't pretend to be perfect — we're real people with good intentions."
+            icon="heart"
+            color="red"
+            delay={0}
+          />
+          <PillarCard
+            title="Mentorship"
+            subtitle="Guiding the Next Generation"
+            description="Through humility and honesty, we guide young minds away from adversity and toward opportunity and confidence."
+            icon="compass"
+            color="green"
+            delay={0.15}
+          />
+          <PillarCard
+            title="Community"
+            subtitle="Strength in Togetherness"
+            description="From giveaways to workshops, we create events that strengthen bonds and foster a genuine sense of belonging."
+            icon="users"
+            color="teal"
+            delay={0.3}
+          />
+        </div>
+      </Section>
+
       <Section id="about" variant="cream">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
@@ -210,41 +245,6 @@ export default function Home() {
               <Heart className="w-6 h-6 fill-current" />
             </div>
           </motion.div>
-        </div>
-      </Section>
-
-      <Section id="purpose" variant="white">
-        <SectionHeader
-          label="Our Mission Matters"
-          title="The Three Pillars That Guide Everything We Do"
-          subtitle="Built on straight-forward compassion, positive energy, and conviction."
-        />
-
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          <PillarCard
-            title="Authenticity"
-            subtitle="Straight-Forward Compassion"
-            description="We lead with genuine care and positive energy. We don't pretend to be perfect — we're real people with good intentions."
-            icon="heart"
-            color="red"
-            delay={0}
-          />
-          <PillarCard
-            title="Mentorship"
-            subtitle="Guiding the Next Generation"
-            description="Through humility and honesty, we guide young minds away from adversity and toward opportunity and confidence."
-            icon="compass"
-            color="green"
-            delay={0.15}
-          />
-          <PillarCard
-            title="Community"
-            subtitle="Strength in Togetherness"
-            description="From giveaways to workshops, we create events that strengthen bonds and foster a genuine sense of belonging."
-            icon="users"
-            color="teal"
-            delay={0.3}
-          />
         </div>
       </Section>
 
