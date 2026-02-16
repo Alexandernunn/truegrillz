@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { Heart, Users, Utensils, Gift, ArrowRight } from "lucide-react";
+import { Heart, Users, Utensils, Gift, ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "wouter";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { PageTransition } from "@/components/PageTransition";
+
+const ZEFFY_URL = "https://www.zeffy.com/en-US/donation-form/paying-it-forward";
 
 const IMPACT_ITEMS = [
   { icon: Utensils, value: "$10", label: "Feeds a child for a week", color: "bg-[#18A058]" },
@@ -28,92 +29,43 @@ export default function Donate() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
               <Heart className="w-12 h-12 mx-auto mb-6 fill-current opacity-80" />
               <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl mb-6">Pay It Forward</h1>
-              <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10">
                 Every contribution helps us bless someone who needs it most.
                 Powered by faith, fueled by community.
               </p>
+              <a href={ZEFFY_URL} target="_blank" rel="noreferrer">
+                <Button className="bg-white text-[#F83030] rounded-full font-bold shadow-xl" size="lg" data-testid="button-donate-hero">
+                  <Heart className="w-5 h-5 mr-2 fill-current" /> Donate Now <ExternalLink className="w-4 h-4 ml-2" />
+                </Button>
+              </a>
             </motion.div>
           </div>
         </div>
 
         <section className="py-16 md:py-24 bg-white">
-          <div className="max-w-5xl mx-auto px-4 md:px-8">
-            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-2xl p-6 lg:p-8 text-[#1E4E48] shadow-xl border border-gray-100"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-[#F83030]/10 flex items-center justify-center">
-                    <Heart className="w-5 h-5 text-[#F83030]" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-bold text-xl">Support Our Mission</h3>
-                    <p className="text-gray-500 text-sm">Fund mentorship programs and community events</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-2 mb-6">
-                  <Button className="flex-1 rounded-full bg-[#F83030] text-white" data-testid="button-onetime-mission">One-time</Button>
-                  <Button variant="outline" className="flex-1 rounded-full border-gray-200 text-gray-600" data-testid="button-monthly-mission">Monthly</Button>
-                </div>
-
-                <div className="grid grid-cols-4 gap-2 mb-6">
-                  {[25, 50, 100, 250].map((amt) => (
-                    <button key={amt} className="border border-gray-200 rounded-lg py-2.5 font-bold text-sm hover:border-[#F83030] hover:text-[#F83030] transition-colors focus:ring-2 focus:ring-[#F83030] focus:outline-none" data-testid={`button-donate-${amt}`}>
-                      ${amt}
-                    </button>
-                  ))}
-                </div>
-
-                <Input placeholder="Custom Amount" type="number" className="mb-6" data-testid="input-custom-amount" />
-                <Button className="w-full bg-[#F83030] text-white font-bold rounded-full shadow-lg" data-testid="button-donate-now">
-                  Donate Now
+          <div className="max-w-3xl mx-auto px-4 md:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-8 lg:p-12 text-center shadow-xl border border-gray-100"
+            >
+              <div className="w-16 h-16 rounded-full bg-[#F83030]/10 flex items-center justify-center mx-auto mb-6">
+                <Heart className="w-8 h-8 text-[#F83030]" />
+              </div>
+              <h2 className="font-display font-bold text-2xl md:text-3xl text-[#1E4E48] mb-4">Support Our Mission</h2>
+              <p className="text-gray-600 mb-4 max-w-lg mx-auto leading-relaxed">
+                Your donation funds mentorship programs, community events, and our Adopt a Bus Stop initiative that feeds children across Nashville.
+              </p>
+              <p className="text-gray-500 text-sm mb-8">
+                All donations are securely processed through Zeffy — 100% of your contribution goes directly to our programs.
+              </p>
+              <a href={ZEFFY_URL} target="_blank" rel="noreferrer">
+                <Button className="bg-[#F83030] text-white font-bold rounded-full shadow-lg px-10" size="lg" data-testid="button-donate-now">
+                  Donate Now <ExternalLink className="w-4 h-4 ml-2" />
                 </Button>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.15 }}
-                className="bg-white rounded-2xl p-6 lg:p-8 text-[#1E4E48] shadow-xl border border-gray-100 border-t-4 border-t-[#18A058]"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-[#18A058]/10 flex items-center justify-center">
-                    <Utensils className="w-5 h-5 text-[#18A058]" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-bold text-xl">Adopt a Bus Stop</h3>
-                    <p className="text-gray-500 text-sm">Every dollar feeds a child. No exceptions.</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-2 mb-6">
-                  <Button variant="outline" className="flex-1 rounded-full border-gray-200 text-gray-600" data-testid="button-onetime-busstop">One-time</Button>
-                  <Button className="flex-1 rounded-full bg-[#18A058] text-white" data-testid="button-monthly-busstop">Monthly</Button>
-                </div>
-
-                <div className="grid grid-cols-4 gap-2 mb-6">
-                  {[10, 25, 50, 100].map((amt) => (
-                    <button key={amt} className="border border-gray-200 rounded-lg py-2.5 font-bold text-sm hover:border-[#18A058] hover:text-[#18A058] transition-colors focus:ring-2 focus:ring-[#18A058] focus:outline-none" data-testid={`button-busstop-${amt}`}>
-                      ${amt}
-                    </button>
-                  ))}
-                </div>
-
-                <Input placeholder="Custom Amount" type="number" className="mb-6" data-testid="input-busstop-amount" />
-                <Button className="w-full bg-[#18A058] text-white font-bold rounded-full shadow-lg" data-testid="button-feed-child">
-                  Feed a Child Today
-                </Button>
-              </motion.div>
-            </div>
-
-            <p className="text-center text-gray-400 text-sm mt-6">
-              * Secure payment processing integration coming soon. Contact us for direct donations.
-            </p>
+              </a>
+            </motion.div>
           </div>
         </section>
 
@@ -146,6 +98,14 @@ export default function Donate() {
                   <p className="text-gray-600 text-sm">{item.label}</p>
                 </motion.div>
               ))}
+            </div>
+
+            <div className="text-center mt-10">
+              <a href={ZEFFY_URL} target="_blank" rel="noreferrer">
+                <Button className="bg-[#18A058] text-white font-bold rounded-full shadow-lg" size="lg" data-testid="button-donate-impact">
+                  Make Your Impact <ExternalLink className="w-4 h-4 ml-2" />
+                </Button>
+              </a>
             </div>
           </div>
         </section>
